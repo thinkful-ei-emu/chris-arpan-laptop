@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './SpecSelect.css';
+
 function SpecSelect(props) {
 
     const features = Object.keys(props.features)
