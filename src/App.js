@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Header from './component/Header';
+import Display from './component/Display';
+
 import './App.css';
 
 class App extends Component {
@@ -27,6 +30,7 @@ class App extends Component {
   }
 
   updateFeature(feature, newValue) {
+    console.log(feature)
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
     this.setState({
@@ -75,11 +79,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing</h1>
-          <h3>Laptops</h3>
-          <h5>Customize your laptop</h5>  
-        </header>      
+        <Header />
+        <Display selected={this.state.selected} features={this.props.features} updateFeature={() => this.updateFeature} />
         <main>
           <section className="main__form">
             <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
