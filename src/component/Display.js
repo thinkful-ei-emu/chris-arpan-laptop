@@ -1,4 +1,7 @@
 import React from 'react';
+import PriceCalc from './component/PriceCalc'
+import SpecSelect from './component/SpecSelect'
+
 
 function Display(props) {
     const summary = Object.keys(props.selected)
@@ -18,13 +21,17 @@ function Display(props) {
     const features = Object.keys(props.features)
           .map(key => {
             const options = props.features[key].map((item, index) => {
+              console.log(props.selected[key].name);
+              console.log(item);
+
               const selectedClass = item.name === props.selected[key].name ? 'feature__selected' : '';
-              const featureClass = 'feature__option ' + selectedClass;
+              
+              const featureClass = 'feature__option ' + selectedClass;  
+
               return <li key={index} className="feature__item">
                 <div className={featureClass}
                   
                   onClick={e => {
-                      console.log(key, item);
                       props.updateFeature(key, item);
                     }}>
                     { item.name }
@@ -44,6 +51,9 @@ function Display(props) {
 
     return (
         <main>
+
+          <SpecSelect features = {props.features}/>
+          <PriceCalc summary = {} total ={}/>
           <section className="main__form">
             <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
             { features }
